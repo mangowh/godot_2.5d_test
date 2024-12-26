@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c21bfrgyhw8q2"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_dfo10"]
+[ext_resource type="Texture2D" uid="uid://c05fljb22ueq1" path="res://icon.svg" id="2_7176n"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bf6fp"]
+size = Vector2(50, 20)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_75ax3"]
+
+[node name="Game" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_bf6fp")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51924, 0)
+script = ExtResource("1_dfo10")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0, 8.48076, 10)
+current = true
+fov = 90.0
+far = 1000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("SphereShape3D_75ax3")
+
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(3.49496, 0, 0, 0, 3.49496, 0, 0, 0, 1, 0, 0.681986, 0)
+billboard = 1
+texture = ExtResource("2_7176n")
